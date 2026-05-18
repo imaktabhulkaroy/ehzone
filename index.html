@@ -201,7 +201,21 @@
   let isLoggedIn=false;
   function renderCards(filter='all'){const grid=document.getElementById('cardsGrid');const filtered=filter==='all'?resources:resources.filter(r=>r.type===filter);grid.innerHTML=filtered.map(r=>`<div class="resource-card"><div class="card-thumb ${r.thumb}">${r.icon}</div><div class="card-body"><span class="card-tag tag-${r.type}">${r.type==='reja'?'Ish Reja':r.type==='darslik'?'Darslik':r.type==='test'?'Test':'Prezentatsiya'}</span><div class="card-name">${r.name}</div><div class="card-desc">${r.desc}</div><div class="card-footer"><div class="card-meta"><span>📄 ${r.pages} bet</span><span>⬇️ ${r.downloads.toLocaleString()}</span></div><button class="download-btn" onclick="handleDownload(${r.id})">⬇ Yuklab</button></div></div></div>`).join('');}
   function filterCards(type,btn){document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderCards(type);}
-  function handleDownload(id){if(!isLoggedIn){document.getElementById('lockedOverlay').classList.add('active');}else{showToast('✅ Yuklab olish boshlandi!');}}
+  function handleDownload(id){
+  if(!isLoggedIn){
+    document.getElementById('lockedOverlay').classList.add('active');
+  } else {
+    const links={
+      1:'https://drive.google.com/uc?export=download&id=1VgneqBHrSvA9IZmHJGtoqJTlE5lIqg83'
+    };
+    if(links[id]){
+      window.open(links[id],'_blank');
+    } else {
+      showToast('Tez orada qo\'shiladi!');
+    }
+  }
+}
+
   function openModal(tab){document.getElementById('authModal').classList.add('active');switchTab(tab);}
   function closeModal(){document.getElementById('authModal').classList.remove('active');}
   function closeLocked(){document.getElementById('lockedOverlay').classList.remove('active');}
