@@ -17,258 +17,149 @@
     --border: #E5E4E0;
     --card-hover: #F0FFF4;
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  /* NAV */
-  nav {
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(245,244,240,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    padding: 0 5vw;
-    display: flex; align-items: center; justify-content: space-between;
-    height: 64px;
-  }
-
-  .logo {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800; font-size: 1.4rem;
-    color: var(--accent);
-    letter-spacing: -0.5px;
-  }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; }
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(245,244,240,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 5vw; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.4rem; color: var(--accent); letter-spacing: -0.5px; }
   .logo span { color: var(--accent3); }
-
   .nav-links { display: flex; gap: 32px; list-style: none; }
-  .nav-links a {
-    font-size: 0.9rem; font-weight: 500;
-    color: var(--muted); text-decoration: none;
-    transition: color 0.2s;
-  }
+  .nav-links a { font-size: 0.9rem; font-weight: 500; color: var(--muted); text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover { color: var(--text); }
-
-  .nav-btn {
-    background: var(--accent); color: white;
-    border: none; padding: 10px 22px;
-    border-radius: 100px; font-size: 0.88rem; font-weight: 500;
-    cursor: pointer; font-family: 'DM Sans', sans-serif;
-    transition: background 0.2s, transform 0.15s;
-  }
-  .nav-btn:hover { background: #1d4d38; transform: scale(1.03); }
-
-  /* HERO */
-  .hero {
-    padding: 96px 5vw 64px;
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 48px; align-items: center;
-    max-width: 1200px; margin: 0 auto;
-  }
-
-  .hero-badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: var(--accent2); color: var(--accent);
-    padding: 6px 14px; border-radius: 100px;
-    font-size: 0.8rem; font-weight: 600;
-    margin-bottom: 24px;
-    animation: fadeDown 0.6s ease;
-  }
-  .hero-badge::before { content: '●'; font-size: 0.6rem; }
-
-  h1 {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(2.4rem, 4vw, 3.6rem);
-    font-weight: 800; line-height: 1.1;
-    letter-spacing: -1.5px;
-    animation: fadeUp 0.7s ease 0.1s both;
-  }
+  .nav-btn { background: var(--accent); color: white; border: none; padding: 10px 22px; border-radius: 100px; font-size: 0.88rem; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.2s, transform 0.15s; }
+  .hero { padding: 96px 5vw 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; max-width: 1200px; margin: 0 auto; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--accent2); color: var(--accent); padding: 6px 14px; border-radius: 100px; font-size: 0.8rem; font-weight: 600; margin-bottom: 24px; }
+  h1 { font-family: 'Syne', sans-serif; font-size: clamp(2.4rem, 4vw, 3.6rem); font-weight: 800; line-height: 1.1; letter-spacing: -1.5px; }
   h1 em { color: var(--accent); font-style: normal; }
-
-  .hero-sub {
-    margin-top: 20px; font-size: 1.05rem;
-    color: var(--muted); line-height: 1.7;
-    max-width: 420px;
-    animation: fadeUp 0.7s ease 0.2s both;
-  }
-
-  .hero-actions {
-    margin-top: 36px; display: flex; gap: 14px; flex-wrap: wrap;
-    animation: fadeUp 0.7s ease 0.3s both;
-  }
-
-  .btn-primary {
-    background: var(--accent); color: white;
-    padding: 14px 28px; border-radius: 100px;
-    font-size: 0.95rem; font-weight: 500;
-    border: none; cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
-    transition: all 0.2s;
-  }
-  .btn-primary:hover { background: #1d4d38; transform: translateY(-2px); }
-
-  .btn-outline {
-    background: transparent; color: var(--text);
-    padding: 14px 28px; border-radius: 100px;
-    font-size: 0.95rem; font-weight: 500;
-    border: 1.5px solid var(--border); cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
-    transition: all 0.2s;
-  }
-  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
-
-  .hero-stats {
-    display: flex; gap: 36px; margin-top: 48px;
-    animation: fadeUp 0.7s ease 0.4s both;
-  }
-  .stat-num {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.8rem; font-weight: 800; color: var(--text);
-  }
+  .hero-sub { margin-top: 20px; font-size: 1.05rem; color: var(--muted); line-height: 1.7; max-width: 420px; }
+  .hero-actions { margin-top: 36px; display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary { background: var(--accent); color: white; padding: 14px 28px; border-radius: 100px; font-size: 0.95rem; font-weight: 500; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; }
+  .btn-outline { background: transparent; color: var(--text); padding: 14px 28px; border-radius: 100px; font-size: 0.95rem; font-weight: 500; border: 1.5px solid var(--border); cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; }
+  .hero-stats { display: flex; gap: 36px; margin-top: 48px; }
+  .stat-num { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--text); }
   .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
-
-  .hero-visual {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
-    animation: fadeUp 0.7s ease 0.3s both;
-  }
-
-  .hero-card {
-    background: var(--surface); border-radius: 20px;
-    padding: 24px; border: 1px solid var(--border);
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .hero-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
-  .hero-card:nth-child(2) { margin-top: 28px; }
-  .hero-card:nth-child(3) { margin-top: -20px; }
-
-  .card-icon {
-    width: 44px; height: 44px; border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.4rem; margin-bottom: 14px;
-  }
+  .hero-visual { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .hero-card { background: var(--surface); border-radius: 20px; padding: 24px; border: 1px solid var(--border); transition: transform 0.2s, box-shadow 0.2s; }
+  .card-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 14px; }
   .card-icon.green { background: var(--accent2); }
   .card-icon.orange { background: #FFE8D6; }
   .card-icon.blue { background: #D6E8FF; }
   .card-icon.purple { background: #EAD6FF; }
-
   .card-title-sm { font-weight: 600; font-size: 0.9rem; margin-bottom: 4px; }
   .card-count { font-size: 0.8rem; color: var(--muted); }
-
-  /* AUTH MODAL */
-  .modal-overlay {
-    display: none; position: fixed; inset: 0;
-    background: rgba(0,0,0,0.4); backdrop-filter: blur(6px);
-    z-index: 1000; align-items: center; justify-content: center;
-  }
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); backdrop-filter: blur(6px); z-index: 1000; align-items: center; justify-content: center; }
   .modal-overlay.active { display: flex; }
-
-  .modal {
-    background: var(--surface); border-radius: 24px;
-    padding: 40px; width: 90%; max-width: 420px;
-    box-shadow: 0 32px 80px rgba(0,0,0,0.15);
-    animation: scaleIn 0.3s ease;
-  }
-
-  .modal-tabs {
-    display: flex; gap: 0; margin-bottom: 32px;
-    background: var(--bg); border-radius: 12px; padding: 4px;
-  }
-  .modal-tab {
-    flex: 1; padding: 10px; text-align: center;
-    font-size: 0.9rem; font-weight: 500; cursor: pointer;
-    border-radius: 10px; transition: all 0.2s;
-    color: var(--muted); border: none; background: none;
-    font-family: 'DM Sans', sans-serif;
-  }
+  .modal { background: var(--surface); border-radius: 24px; padding: 40px; width: 90%; max-width: 420px; box-shadow: 0 32px 80px rgba(0,0,0,0.15); position: relative; }
+  .modal-tabs { display: flex; margin-bottom: 32px; background: var(--bg); border-radius: 12px; padding: 4px; }
+  .modal-tab { flex: 1; padding: 10px; text-align: center; font-size: 0.9rem; font-weight: 500; cursor: pointer; border-radius: 10px; transition: all 0.2s; color: var(--muted); border: none; background: none; font-family: 'DM Sans', sans-serif; }
   .modal-tab.active { background: var(--surface); color: var(--text); box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
-
-  .modal h2 {
-    font-family: 'Syne', sans-serif; font-size: 1.5rem;
-    font-weight: 700; margin-bottom: 8px;
-  }
+  .modal h2 { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 8px; }
   .modal p { color: var(--muted); font-size: 0.9rem; margin-bottom: 28px; }
-
   .form-group { margin-bottom: 16px; }
   .form-group label { font-size: 0.85rem; font-weight: 500; display: block; margin-bottom: 6px; }
-  .form-group input {
-    width: 100%; padding: 12px 16px;
-    border: 1.5px solid var(--border); border-radius: 12px;
-    font-size: 0.95rem; font-family: 'DM Sans', sans-serif;
-    background: var(--bg); transition: border-color 0.2s;
-    outline: none;
-  }
-  .form-group input:focus { border-color: var(--accent); }
-
-  .btn-full {
-    width: 100%; padding: 14px; background: var(--accent);
-    color: white; border: none; border-radius: 12px;
-    font-size: 0.95rem; font-weight: 600; cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
-    transition: background 0.2s;
-    margin-top: 8px;
-  }
-  .btn-full:hover { background: #1d4d38; }
-
-  .modal-close {
-    position: absolute; top: 16px; right: 16px;
-    background: var(--bg); border: none; width: 36px; height: 36px;
-    border-radius: 50%; font-size: 1.1rem; cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-< truncated lines 223-445 >
+  .form-group input { width: 100%; padding: 12px 16px; border: 1.5px solid var(--border); border-radius: 12px; font-size: 0.95rem; font-family: 'DM Sans', sans-serif; background: var(--bg); transition: border-color 0.2s; outline: none; }
+  .btn-full { width: 100%; padding: 14px; background: var(--accent); color: white; border: none; border-radius: 12px; font-size: 0.95rem; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; margin-top: 8px; }
+  .modal-close { position: absolute; top: 16px; right: 16px; background: var(--bg); border: none; width: 36px; height: 36px; border-radius: 50%; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--muted); }
+  .section { padding: 64px 5vw; max-width: 1200px; margin: 0 auto; }
+  .section-label { font-size: 0.8rem; font-weight: 600; color: var(--accent); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
+  .section-title { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 40px; }
+  .categories { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
+  .cat-btn { padding: 10px 20px; border-radius: 100px; font-size: 0.88rem; font-weight: 500; cursor: pointer; border: 1.5px solid var(--border); background: var(--surface); color: var(--muted); transition: all 0.2s; font-family: 'DM Sans', sans-serif; }
+  .cat-btn:hover, .cat-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+  .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+  .resource-card { background: var(--surface); border-radius: 20px; border: 1px solid var(--border); overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; cursor: pointer; }
+  .resource-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); }
+  .card-thumb { height: 120px; display: flex; align-items: center; justify-content: center; font-size: 2.8rem; }
+  .card-thumb.t1 { background: linear-gradient(135deg, #B7E4C7, #52B788); }
+  .card-thumb.t2 { background: linear-gradient(135deg, #FFE8D6, #FF9A76); }
+  .card-thumb.t3 { background: linear-gradient(135deg, #D6E8FF, #74B9FF); }
+  .card-thumb.t4 { background: linear-gradient(135deg, #EAD6FF, #A29BFE); }
+  .card-body { padding: 20px; }
+  .card-tag { display: inline-block; font-size: 0.72rem; font-weight: 600; padding: 3px 10px; border-radius: 100px; margin-bottom: 10px; text-transform: uppercase; }
+  .tag-reja { background: #B7E4C7; color: #2D6A4F; }
+  .tag-darslik { background: #FFE8D6; color: #C05621; }
+  .tag-test { background: #D6E8FF; color: #2B6CB0; }
+  .tag-prezentatsiya { background: #EAD6FF; color: #553C9A; }
+  .card-name { font-weight: 600; font-size: 1rem; margin-bottom: 6px; line-height: 1.4; }
+  .card-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.5; margin-bottom: 16px; }
+  .card-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; border-top: 1px solid var(--border); }
+  .card-meta { font-size: 0.8rem; color: var(--muted); display: flex; gap: 12px; }
+  .download-btn { background: var(--accent); color: white; border: none; padding: 8px 16px; border-radius: 100px; font-size: 0.8rem; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+  .locked-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); backdrop-filter: blur(6px); z-index: 999; align-items: center; justify-content: center; }
+  .locked-overlay.active { display: flex; }
+  .locked-box { background: var(--surface); border-radius: 24px; padding: 40px; text-align: center; max-width: 360px; width: 90%; }
+  .locked-icon { font-size: 3rem; margin-bottom: 16px; }
+  .locked-box h3 { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 700; margin-bottom: 8px; }
+  .locked-box p { color: var(--muted); font-size: 0.9rem; margin-bottom: 28px; }
+  .locked-actions { display: flex; gap: 12px; }
+  footer { background: var(--text); color: white; padding: 48px 5vw; margin-top: 80px; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; max-width: 1200px; margin: 0 auto; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .footer-logo { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 800; color: white; margin-bottom: 12px; }
+  .footer-logo span { color: var(--accent3); }
+  .footer-desc { color: rgba(255,255,255,0.5); font-size: 0.9rem; line-height: 1.6; }
+  .footer-col h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 16px; }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 10px; }
+  .footer-col a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.88rem; }
+  .footer-bottom { max-width: 1200px; margin: 24px auto 0; text-align: center; color: rgba(255,255,255,0.3); font-size: 0.82rem; }
+  .toast { position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--text); color: white; padding: 14px 24px; border-radius: 100px; font-size: 0.9rem; z-index: 9999; transition: transform 0.3s ease; }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+  @media (max-width: 768px) { .hero { grid-template-columns: 1fr; } .hero-visual { display: none; } .nav-links { display: none; } .footer-grid { grid-template-columns: 1fr; gap: 28px; } }
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo">EH<span>zone</span></div>
+  <ul class="nav-links">
+    <li><a href="#materials">Materiallar</a></li>
+    <li><a href="#">Haqida</a></li>
+    <li><a href="#">Aloqa</a></li>
+  </ul>
+  <button class="nav-btn" onclick="openModal('login')">Kirish / Ro'yxat</button>
+</nav>
+<section style="background: var(--bg);">
+  <div class="hero">
+    <div>
+      <div class="hero-badge">100% Bepul Platforma</div>
+      <h1>Ta'lim<br><em>materiallari</em><br>bir joyda</h1>
+      <p class="hero-sub">Ish rejalari, darsliklar, testlar va prezentatsiyalarni ro'yxatdan o'tib bepul yuklab oling.</p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="openModal('register')">Bepul Boshlash →</button>
+        <button class="btn-outline" onclick="document.getElementById('materials').scrollIntoView({behavior:'smooth'})">Materiallarni Ko'rish</button>
+      </div>
+      <div class="hero-stats">
+        <div><div class="stat-num">1,200+</div><div class="stat-label">Material</div></div>
+        <div><div class="stat-num">8,500+</div><div class="stat-label">Foydalanuvchi</div></div>
+        <div><div class="stat-num">100%</div><div class="stat-label">Bepul</div></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card"><div class="card-icon green">📋</div><div class="card-title-sm">Ish Rejalari</div><div class="card-count">320 ta material</div></div>
+      <div class="hero-card"><div class="card-icon orange">📚</div><div class="card-title-sm">Darsliklar</div><div class="card-count">480 ta material</div></div>
+      <div class="hero-card"><div class="card-icon blue">✅</div><div class="card-title-sm">Testlar</div><div class="card-count">260 ta material</div></div>
+      <div class="hero-card"><div class="card-icon purple">🎯</div><div class="card-title-sm">Prezentatsiyalar</div><div class="card-count">140 ta material</div></div>
+    </div>
+  </div>
 </section>
-
-<!-- MATERIALS -->
 <section class="section" id="materials">
   <div class="section-label">Materiallar</div>
   <div class="section-title">Barcha resurslar</div>
-
   <div class="categories">
-    <button class="cat-btn active" onclick="filterCards('all', this)">Hammasi</button>
-    <button class="cat-btn" onclick="filterCards('reja', this)">📋 Ish Rejalari</button>
-    <button class="cat-btn" onclick="filterCards('darslik', this)">📚 Darsliklar</button>
-    <button class="cat-btn" onclick="filterCards('test', this)">✅ Testlar</button>
-    <button class="cat-btn" onclick="filterCards('prezentatsiya', this)">🎯 Prezentatsiyalar</button>
+    <button class="cat-btn active" onclick="filterCards('all',this)">Hammasi</button>
+    <button class="cat-btn" onclick="filterCards('reja',this)">📋 Ish Rejalari</button>
+    <button class="cat-btn" onclick="filterCards('darslik',this)">📚 Darsliklar</button>
+    <button class="cat-btn" onclick="filterCards('test',this)">✅ Testlar</button>
+    <button class="cat-btn" onclick="filterCards('prezentatsiya',this)">🎯 Prezentatsiyalar</button>
   </div>
-
   <div class="cards-grid" id="cardsGrid"></div>
 </section>
-
-<!-- FOOTER -->
 <footer>
   <div class="footer-grid">
-    <div>
-      <div class="footer-logo">EH<span>zone</span></div>
-      <p class="footer-desc">O'zbekiston o'qituvchilari va o'quvchilari uchun bepul ta'lim materiallari platformasi.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Materiallar</h4>
-      <ul>
-        <li><a href="#">Ish Rejalari</a></li>
-        <li><a href="#">Darsliklar</a></li>
-        <li><a href="#">Testlar</a></li>
-        <li><a href="#">Prezentatsiyalar</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Platforma</h4>
-      <ul>
-        <li><a href="#">Haqida</a></li>
-        <li><a href="#">Ro'yxatdan o'tish</a></li>
-        <li><a href="#">Aloqa</a></li>
-        <li><a href="#">Yordam</a></li>
-      </ul>
-    </div>
+    <div><div class="footer-logo">EH<span>zone</span></div><p class="footer-desc">O'zbekiston o'qituvchilari va o'quvchilari uchun bepul ta'lim materiallari platformasi.</p></div>
+    <div class="footer-col"><h4>Materiallar</h4><ul><li><a href="#">Ish Rejalari</a></li><li><a href="#">Darsliklar</a></li><li><a href="#">Testlar</a></li><li><a href="#">Prezentatsiyalar</a></li></ul></div>
+    <div class="footer-col"><h4>Platforma</h4><ul><li><a href="#">Haqida</a></li><li><a href="#">Ro'yxatdan o'tish</a></li><li><a href="#">Aloqa</a></li><li><a href="#">Yordam</a></li></ul></div>
   </div>
   <div class="footer-bottom">© 2026 EHzone. Barcha huquqlar himoyalangan.</div>
 </footer>
-
-<!-- AUTH MODAL -->
 <div class="modal-overlay" id="authModal">
   <div class="modal">
     <button class="modal-close" onclick="closeModal()">✕</button>
@@ -276,42 +167,23 @@
       <button class="modal-tab active" id="loginTab" onclick="switchTab('login')">Kirish</button>
       <button class="modal-tab" id="registerTab" onclick="switchTab('register')">Ro'yxat</button>
     </div>
-
     <div id="loginForm">
       <h2>Xush kelibsiz!</h2>
       <p>Materiallarni yuklab olish uchun kiring.</p>
-      <div class="form-group">
-        <label>Email</label>
-        <input type="email" placeholder="email@example.com">
-      </div>
-      <div class="form-group">
-        <label>Parol</label>
-        <input type="password" placeholder="••••••••">
-      </div>
+      <div class="form-group"><label>Email</label><input type="email" placeholder="email@example.com"></div>
+      <div class="form-group"><label>Parol</label><input type="password" placeholder="••••••••"></div>
       <button class="btn-full" onclick="handleLogin()">Kirish</button>
     </div>
-
     <div id="registerForm" style="display:none">
       <h2>Ro'yxatdan o'ting</h2>
       <p>Bepul ro'yxatdan o'ting va 1200+ materialga ega bo'ling.</p>
-      <div class="form-group">
-        <label>Ism va familiya</label>
-        <input type="text" placeholder="Ism Familiya">
-      </div>
-      <div class="form-group">
-        <label>Email</label>
-        <input type="email" placeholder="email@example.com">
-      </div>
-      <div class="form-group">
-        <label>Parol</label>
-        <input type="password" placeholder="Kamida 8 belgi">
-      </div>
+      <div class="form-group"><label>Ism va familiya</label><input type="text" placeholder="Ism Familiya"></div>
+      <div class="form-group"><label>Email</label><input type="email" placeholder="email@example.com"></div>
+      <div class="form-group"><label>Parol</label><input type="password" placeholder="Kamida 8 belgi"></div>
       <button class="btn-full" onclick="handleRegister()">Ro'yxatdan O'tish</button>
     </div>
   </div>
 </div>
-
-<!-- LOCKED OVERLAY -->
 <div class="locked-overlay" id="lockedOverlay">
   <div class="locked-box">
     <div class="locked-icon">🔒</div>
@@ -319,125 +191,26 @@
     <p>Materiallarni bepul yuklab olish uchun ro'yxatdan o'ting yoki kiring.</p>
     <div class="locked-actions">
       <button class="btn-outline" style="flex:1" onclick="closeLocked()">Bekor</button>
-      <button class="btn-primary" style="flex:1" onclick="closeLocked(); openModal('register')">Ro'yxat →</button>
+      <button class="btn-primary" style="flex:1" onclick="closeLocked();openModal('register')">Ro'yxat →</button>
     </div>
   </div>
 </div>
-
-<!-- TOAST -->
 <div class="toast" id="toast">✅ Muvaffaqiyatli!</div>
-
 <script>
-  // Data
-  const resources = [
-    { id:1, type:'reja', thumb:'t1', icon:'📋', name:'Matematika Ish Reja (1-4 sinf)', desc:'Boshlang\'ich sinf uchun yillik ish rejasi', pages:24, downloads:1240 },
-    { id:2, type:'darslik', thumb:'t2', icon:'📚', name:'O\'zbek Tili Darsligi 5-sinf', desc:'5-sinf o\'zbek tili to\'liq darslik', pages:180, downloads:890 },
-    { id:3, type:'test', thumb:'t3', icon:'✅', name:'Fizika Testlar To\'plami 9-sinf', desc:'Nazorat ishlari uchun test savollari', pages:48, downloads:2100 },
-    { id:4, type:'prezentatsiya', thumb:'t4', icon:'🎯', name:'Kimyo Prezentatsiya 8-sinf', desc:'Atom tuzilishi mavzusi bo\'yicha slaydlar', pages:32, downloads:560 },
-    { id:5, type:'reja', thumb:'t1', icon:'📋', name:'Tarix Ish Reja (7-sinf)', desc:'O\'rta asr tarixi bo\'yicha yillik reja', pages:20, downloads:780 },
-    { id:6, type:'darslik', thumb:'t2', icon:'📚', name:'Ingliz Tili Grammar Guide', desc:'Ingliz tili grammatika qo\'llanmasi', pages:96, downloads:3200 },
-    { id:7, type:'test', thumb:'t3', icon:'✅', name:'Biologiya Testlar 10-sinf', desc:'Genetika va ekologiya bo\'yicha testlar', pages:36, downloads:1450 },
-    { id:8, type:'prezentatsiya', thumb:'t4', icon:'🎯', name:'Informatika Slaydlar To\'plami', desc:'Algoritm va dasturlash asoslari', pages:56, downloads:920 },
-    { id:9, type:'reja', thumb:'t1', icon:'📋', name:'Geografiya Ish Reja (6-sinf)', desc:'Tabiiy geografiya bo\'yicha kalendar reja', pages:18, downloads:670 },
-    { id:10, type:'darslik', thumb:'t2', icon:'📚', name:'Algebra Darsligi 7-sinf', desc:'Tenlamalar va funksiyalar bo\'yicha', pages:140, downloads:2800 },
-    { id:11, type:'test', thumb:'t3', icon:'✅', name:'Kimyo Nazorat Ishlari 11-sinf', desc:'YIM tayyorlov test to\'plami', pages:64, downloads:1890 },
-    { id:12, type:'prezentatsiya', thumb:'t4', icon:'🎯', name:'Tarix Vizual Materiallar', desc:'Buyuk ipak yo\'li tarixi slaydlari', pages:28, downloads:430 },
-  ];
-
-  let isLoggedIn = false;
-  let currentFilter = 'all';
-
-  function renderCards(filter = 'all') {
-    const grid = document.getElementById('cardsGrid');
-    const filtered = filter === 'all' ? resources : resources.filter(r => r.type === filter);
-    grid.innerHTML = filtered.map(r => `
-      <div class="resource-card" data-type="${r.type}">
-        <div class="card-thumb ${r.thumb}">${r.icon}</div>
-        <div class="card-body">
-          <span class="card-tag tag-${r.type}">${r.type === 'reja' ? 'Ish Reja' : r.type === 'darslik' ? 'Darslik' : r.type === 'test' ? 'Test' : 'Prezentatsiya'}</span>
-          <div class="card-name">${r.name}</div>
-          <div class="card-desc">${r.desc}</div>
-          <div class="card-footer">
-            <div class="card-meta">
-              <span>📄 ${r.pages} bet</span>
-              <span>⬇️ ${r.downloads.toLocaleString()}</span>
-            </div>
-            <button class="download-btn" onclick="handleDownload(${r.id})">⬇ Yuklab</button>
-          </div>
-        </div>
-      </div>
-    `).join('');
-  }
-
-  function filterCards(type, btn) {
-    currentFilter = type;
-    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    renderCards(type);
-  }
-
-  function handleDownload(id) {
-    if (!isLoggedIn) {
-      document.getElementById('lockedOverlay').classList.add('active');
-    } else {
-      showToast('✅ Yuklab olish boshlandi!');
-    }
-  }
-
-  function openModal(tab) {
-    document.getElementById('authModal').classList.add('active');
-    switchTab(tab);
-  }
-
-  function closeModal() {
-    document.getElementById('authModal').classList.remove('active');
-  }
-
-  function closeLocked() {
-    document.getElementById('lockedOverlay').classList.remove('active');
-  }
-
-  function switchTab(tab) {
-    document.getElementById('loginForm').style.display = tab === 'login' ? 'block' : 'none';
-    document.getElementById('registerForm').style.display = tab === 'register' ? 'block' : 'none';
-    document.getElementById('loginTab').classList.toggle('active', tab === 'login');
-    document.getElementById('registerTab').classList.toggle('active', tab === 'register');
-  }
-
-  function handleLogin() {
-    isLoggedIn = true;
-    closeModal();
-    showToast('✅ Muvaffaqiyatli kirdingiz!');
-    document.querySelector('.nav-btn').textContent = '👤 Profil';
-  }
-
-  function handleRegister() {
-    isLoggedIn = true;
-    closeModal();
-    showToast('🎉 Xush kelibsiz! Ro\'yxatdan o\'tdingiz.');
-    document.querySelector('.nav-btn').textContent = '👤 Profil';
-  }
-
-  function showToast(msg) {
-    const t = document.getElementById('toast');
-    t.textContent = msg;
-    t.classList.add('show');
-    setTimeout(() => t.classList.remove('show'), 3000);
-  }
-
-  function scrollToMaterials() {
-    document.getElementById('materials').scrollIntoView({ behavior: 'smooth' });
-  }
-
-  // Close modals on overlay click
-  document.getElementById('authModal').addEventListener('click', function(e) {
-    if (e.target === this) closeModal();
-  });
-  document.getElementById('lockedOverlay').addEventListener('click', function(e) {
-    if (e.target === this) closeLocked();
-  });
-
-  // Init
+  const resources=[{id:1,type:'reja',thumb:'t1',icon:'📋',name:'Matematika Ish Reja (1-4 sinf)',desc:'Boshlangich sinf uchun yillik ish rejasi',pages:24,downloads:1240},{id:2,type:'darslik',thumb:'t2',icon:'📚',name:"O'zbek Tili Darsligi 5-sinf",desc:"5-sinf o'zbek tili to'liq darslik",pages:180,downloads:890},{id:3,type:'test',thumb:'t3',icon:'✅',name:"Fizika Testlar To'plami 9-sinf",desc:'Nazorat ishlari uchun test savollari',pages:48,downloads:2100},{id:4,type:'prezentatsiya',thumb:'t4',icon:'🎯',name:'Kimyo Prezentatsiya 8-sinf',desc:'Atom tuzilishi mavzusi boyicha slaydlar',pages:32,downloads:560},{id:5,type:'reja',thumb:'t1',icon:'📋',name:'Tarix Ish Reja (7-sinf)',desc:"O'rta asr tarixi bo'yicha yillik reja",pages:20,downloads:780},{id:6,type:'darslik',thumb:'t2',icon:'📚',name:'Ingliz Tili Grammar Guide',desc:"Ingliz tili grammatika qo'llanmasi",pages:96,downloads:3200},{id:7,type:'test',thumb:'t3',icon:'✅',name:'Biologiya Testlar 10-sinf',desc:'Genetika va ekologiya boyicha testlar',pages:36,downloads:1450},{id:8,type:'prezentatsiya',thumb:'t4',icon:'🎯',name:"Informatika Slaydlar To'plami",desc:'Algoritm va dasturlash asoslari',pages:56,downloads:920},{id:9,type:'reja',thumb:'t1',icon:'📋',name:'Geografiya Ish Reja (6-sinf)',desc:"Tabiiy geografiya bo'yicha kalendar reja",pages:18,downloads:670},{id:10,type:'darslik',thumb:'t2',icon:'📚',name:'Algebra Darsligi 7-sinf',desc:'Tenlamalar va funksiyalar boyicha',pages:140,downloads:2800},{id:11,type:'test',thumb:'t3',icon:'✅',name:'Kimyo Nazorat Ishlari 11-sinf',desc:"YIM tayyorlov test to'plami",pages:64,downloads:1890},{id:12,type:'prezentatsiya',thumb:'t4',icon:'🎯',name:'Tarix Vizual Materiallar',desc:"Buyuk ipak yo'li tarixi slaydlari",pages:28,downloads:430}];
+  let isLoggedIn=false;
+  function renderCards(filter='all'){const grid=document.getElementById('cardsGrid');const filtered=filter==='all'?resources:resources.filter(r=>r.type===filter);grid.innerHTML=filtered.map(r=>`<div class="resource-card"><div class="card-thumb ${r.thumb}">${r.icon}</div><div class="card-body"><span class="card-tag tag-${r.type}">${r.type==='reja'?'Ish Reja':r.type==='darslik'?'Darslik':r.type==='test'?'Test':'Prezentatsiya'}</span><div class="card-name">${r.name}</div><div class="card-desc">${r.desc}</div><div class="card-footer"><div class="card-meta"><span>📄 ${r.pages} bet</span><span>⬇️ ${r.downloads.toLocaleString()}</span></div><button class="download-btn" onclick="handleDownload(${r.id})">⬇ Yuklab</button></div></div></div>`).join('');}
+  function filterCards(type,btn){document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderCards(type);}
+  function handleDownload(id){if(!isLoggedIn){document.getElementById('lockedOverlay').classList.add('active');}else{showToast('✅ Yuklab olish boshlandi!');}}
+  function openModal(tab){document.getElementById('authModal').classList.add('active');switchTab(tab);}
+  function closeModal(){document.getElementById('authModal').classList.remove('active');}
+  function closeLocked(){document.getElementById('lockedOverlay').classList.remove('active');}
+  function switchTab(tab){document.getElementById('loginForm').style.display=tab==='login'?'block':'none';document.getElementById('registerForm').style.display=tab==='register'?'block':'none';document.getElementById('loginTab').classList.toggle('active',tab==='login');document.getElementById('registerTab').classList.toggle('active',tab==='register');}
+  function handleLogin(){isLoggedIn=true;closeModal();showToast('✅ Muvaffaqiyatli kirdingiz!');document.querySelector('.nav-btn').textContent='👤 Profil';}
+  function handleRegister(){isLoggedIn=true;closeModal();showToast("🎉 Xush kelibsiz!");document.querySelector('.nav-btn').textContent='👤 Profil';}
+  function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);}
+  document.getElementById('authModal').addEventListener('click',function(e){if(e.target===this)closeModal();});
+  document.getElementById('lockedOverlay').addEventListener('click',function(e){if(e.target===this)closeLocked();});
   renderCards();
 </script>
 </body>
